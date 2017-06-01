@@ -65,18 +65,20 @@ class OOMDP(object):
 		objects = list()
 		for obj in o:
 
-			# Extract object name
+			# Extract object namef
 			temp = obj
 
 			# Use name to create instance of Object, initialize with 
 			# 	class membership, and attributes with values
-			temp = Object(o[temp].keys()[0], o[temp].values()[0])
+			temp = Object(temp, o[temp].keys()[0], o[temp].values()[0])
 			objects.append(temp)
 
 		# O is now in a more accessible representation
 		self.o = objects
 
 		
+
+
 
 
 

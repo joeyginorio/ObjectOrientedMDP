@@ -11,7 +11,7 @@ class Object(object):
 		bit string of "terms" as specified in (Diuk et al., 2008). 
 	"""
 
-	def __init__(self, c, att):
+	def __init__(self, name, c, att):
 		"""
 			Initializes class membership of object, and the attributes with
 			their respective values and domains.
@@ -22,11 +22,12 @@ class Object(object):
 					e.g. {'Location':(1,2)}
 		"""
 
+		self.name = name
 		self.c = c
 		self.att = att
 
 
-	def __hash__(self):
+	def __str__(self):
 		"""
 			Returns the current state of the world i.e. terms tied to object.
 		"""
@@ -34,8 +35,13 @@ class Object(object):
 		terms = \
 		[{att:self.att[att]} for att in self.att if type(self.att[att])==bool]
 
-		return  int(''.join([str(int(t.values()[0])) for t in terms]))
+		return ''.join([str(int(t.values()[0])) for t in terms])
 
+	def state(self):
+		"""
+			Returns the current state of the world in string format.
+		"""
 
+		return str(self)
 		
 		
