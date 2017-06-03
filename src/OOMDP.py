@@ -136,12 +136,20 @@ class OOMDP(object):
 
 		# Test all object pairs on all relations, return string of terms
 		terms = ""
-		for objPair in objectPairs:
-			for rel in relation.values()[0]:
-				terms += str(int(rel(objPair[0], objPair[1])))
+		for rel in relation.values()[0]:
+			term = 0
+			for objPair in objectPairs:
+				term |= int(rel(objPair[0], objPair[1]))
+			terms += str(term)
 
 		return terms
 
+
+	def effect_att(self, att, s0, s1):
+		"""
+			Returns one effect of each type that would tranform att in state s0
+			to it's value in state s1. 
+		"""
 
 
 
